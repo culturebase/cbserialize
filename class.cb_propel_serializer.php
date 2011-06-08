@@ -47,21 +47,40 @@ class CbPropelSerializer {
             $name = $value;
             $value = null;
          }
-         $method = 'get'.$name;
-         $children = $object->$method();
-			if ($value) {
-				if ($children instanceof PropelObjectCollection) {
-					$result[$name] = self::collectionToArray($children, $value);
-				} else {
-					$result[$name] = self::objectToArray($children, $value);
-				}
-			} else if (!is_object($children)) { //don't serialize if nothing is specified
+
+         $children = '';
+         if (is_object($value)) {
+            $children = $value->value($object, $name);
+            $name = $value->name($object, $name);
+         } else {
+            $children = self::childrenToArray(self::getObjectMember($object, $name), $value);
+         }
+
+         if (!is_object($children)) { //don't serialize if nothing is specified
             $result[$name] = $children;
          }
 		}
 		return $result;
 	}
-	
+
+   static function childrenToArray($children, $fields) {
+      if ($fields) {
+         if ($children instanceof PropelObjectCollection) {
+            return self::collectionToArray($children, $fields);
+         } else if ($children instanceof BaseObject) {
+            return self::objectToArray($children, $fields);
+         }
+      } else {
+         return $children;
+      }
+   }
+
+
+   static function getObjectMember($object, $name) {
+      $method = 'get' . $name;
+      return $object->$method();
+   }
+
    /**
     * TODO: implement
     * Updates the given object with values from an array.
