@@ -1,5 +1,7 @@
 <?php
 
+require_once 'lib/framework/class.cb_propel_serialize_noop.php';
+
 class CbPropelSerializeToTag extends CbPropelSerializeNoop
 {
   
