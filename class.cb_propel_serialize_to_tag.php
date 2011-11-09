@@ -9,7 +9,7 @@ class CbPropelSerializeToTag extends CbPropelSerializeNoop
   {
     $value = parent::value($object, $name);
    
-    $result = "<div".$value."</value";
+    $result = "<div>".$value."</div>";
     return $result;
   }
 }
