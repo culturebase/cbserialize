@@ -76,9 +76,9 @@ class CbPropelSerializer {
    }
 
 
-   static function getObjectMember($object, $name) {
+   static function getObjectMember($object, $name, $args = array()) {
       $method = 'get' . $name;
-      return $object->$method();
+      return call_user_func_array(array($object, $method), $args);
    }
 
    /**

@@ -7,11 +7,10 @@ require_once 'lib/framework/class.cb_propel_serialize_noop.php';
  */
 class CbPropelSerializeRename extends CbPropelSerializeNoop {
    protected $name;
-   protected $fields;
 
-   function __construct($name, $fields = null) {
+   function __construct($name, $fields = null, $args = array()) {
+      parent::__construct($fields, $args);
       $this->name = $name;
-      $this->fields = $fields;
    }
 
    function name($object, $name) {

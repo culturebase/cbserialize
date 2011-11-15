@@ -11,8 +11,8 @@ class CbPropelSerializeMl extends CbPropelSerializeRecursive {
       return $val;
    }
 
-   function __construct($prefix = '', $fields = array()) {
-      parent::__construct($fields);
+   function __construct($prefix = '', $fields = array(), $args = array()) {
+      parent::__construct($fields, $args);
       $this->prefix = $prefix;
    }
 }

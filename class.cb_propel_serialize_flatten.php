@@ -20,8 +20,8 @@ class CbPropelSerializeFlatten extends CbPropelSerializeNoop {
    protected $num_levels;
    protected $strip_keys;
 
-   function __construct($num_levels = 1, $strip_keys = true, $fields = array()) {
-      parent::__construct($fields);
+   function __construct($num_levels = 1, $strip_keys = true, $fields = array(), $args = array()) {
+      parent::__construct($fields, $args);
       $this->num_levels = $num_levels;
       $this->strip_keys = $strip_keys;
    }
