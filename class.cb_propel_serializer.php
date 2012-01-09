@@ -6,7 +6,7 @@
  * or virtual "joins" (e.g. CbFilmFilm.CbFilmGenres).
  */
 class CbPropelSerializer {
-	
+
    /**
     * Serializes a PropelObjectCollection.
     * @param PropelObjectCollection $collection The objects to be serialized.
@@ -21,28 +21,28 @@ class CbPropelSerializer {
     * @return array Nested array with the given fields as keys and the
     *    corresponding members of objects from the given collection as values. 
     */
-	static function collectionToArray($collection, $fields)
-	{
-		$result = array();
+   static function collectionToArray($collection, $fields)
+   {
+      $result = array();
       if (!is_array($fields)) $fields = array($fields);
-		foreach ($collection as $object) {
-			$result[] = self::objectToArray($object, $fields);
-		}
-		return $result;
-	}
-	
+      foreach ($collection as $object) {
+         $result[] = self::objectToArray($object, $fields);
+      }
+      return $result;
+   }
+
    /**
     * Same as @see collectionToArray , only with a single Propel object.
     * @param BaseObject $object The object to be serialized.
     * @param array $fields Fields to be serialized.
     * @return array Requested fields from the given object.
     */
-	static function objectToArray($object, $fields)
-	{
+   static function objectToArray($object, $fields)
+   {
       if (!$object) return array();
-		$result = array();
+      $result = array();
       if (!is_array($fields)) $fields = array($fields);
-		foreach ($fields as $name => $value) {
+      foreach ($fields as $name => $value) {
          if (is_numeric($name)) {
             $name = $value;
             $value = null;
@@ -59,11 +59,12 @@ class CbPropelSerializer {
          if (!is_object($children)) { //don't serialize if nothing is specified
             $result[$name] = $children;
          }
-		}
-		return $result;
-	}
+      }
+      return $result;
+   }
 
-   static function childrenToArray($children, $fields) {
+   static function childrenToArray($children, $fields)
+   {
       if ($fields) {
          if ($children instanceof PropelObjectCollection || is_array($children)) {
             return self::collectionToArray($children, $fields);
@@ -75,8 +76,8 @@ class CbPropelSerializer {
       }
    }
 
-
-   static function getObjectMember($object, $name, $args = array()) {
+   static function getObjectMember($object, $name, $args = array())
+   {
       $method = 'get' . $name;
       return call_user_func_array(array($object, $method), $args);
    }
@@ -87,8 +88,9 @@ class CbPropelSerializer {
     * @param BaseObject $object Object to be updated.
     * @param array $data Data to be inserted.
     */
-	static function objectFromArray($object, $data)
-	{
-		
-	}
+   static function objectFromArray($object, $data)
+   {
+      
+   }
+
 }
