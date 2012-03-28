@@ -78,6 +78,7 @@ class CbPropelSerializer {
 
    static function getObjectMember($object, $name, $args = array())
    {
+      error_log(__METHOD__.": name = ".$name." args = ".print_r($args, TRUE));
       $method = 'get' . $name;
       return call_user_func_array(array($object, $method), $args);
    }
