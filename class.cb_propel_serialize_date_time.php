@@ -5,7 +5,7 @@ class CbPropelSerializeDateTime extends CbPropelSerializeRename
   public function __construct($a_sName, $a_sFormat)
   {
     parent::__construct($a_sName);
-    $this->args = $a_sFormat;
+    $this->args = array($a_sFormat);
   }
   
   public function value($object, $name)
