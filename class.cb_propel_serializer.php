@@ -89,7 +89,6 @@ class CbPropelSerializer {
          $recursion = $l_aMethods[1];
        }
      
-     err
      $returnValue = call_user_func_array(array($object, $method), $args);
      if ( ! empty($recursion) )
        {
