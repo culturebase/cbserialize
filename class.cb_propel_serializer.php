@@ -78,9 +78,26 @@ class CbPropelSerializer {
 
    static function getObjectMember($object, $name, $args = array())
    {
-      error_log(__METHOD__.": name = ".$name." args = ".print_r($args, TRUE));
-      $method = 'get' . $name;
-      return call_user_func_array(array($object, $method), $args);
+     if ( FALSE === strpos($name, "::") )
+       {
+         $method = 'get' . $name;
+       }
+     else
+       {
+         $l_aMethods = explode("::",$name,2);
+         krumo($l_aMethods);
+         die("test");
+         $method = 'get'.$l_aMethods[0];
+         $recursion = $l_aMethods[1];
+       }
+     
+     $returnValue = call_user_func_array(array($object, $method), $args);
+     if ( ! empty($recursion) )
+       {
+         $returnValue = call_user_func_array(array($returnValue, $recursion), array());
+       }
+     
+     return $returnValue;
    }
 
    /**
