@@ -85,7 +85,6 @@ class CbPropelSerializer {
      else
        {
          $l_aMethods = explode("::",$name,2);
-         krumo($l_aMethods);
          $method = 'get'.$l_aMethods[0];
          $recursion = $l_aMethods[1];
        }
