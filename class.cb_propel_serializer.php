@@ -89,10 +89,11 @@ class CbPropelSerializer {
          $recursion = $l_aMethods[1];
        }
      
+     err
      $returnValue = call_user_func_array(array($object, $method), $args);
      if ( ! empty($recursion) )
        {
-         $returnValue = call_user_func_array(array($returnValue, $recursion), array());
+         $returnValue = self::getObjectMember($returnValue, $recursion, array());
        }
      
      return $returnValue;
