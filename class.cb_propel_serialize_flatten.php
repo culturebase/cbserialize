@@ -41,18 +41,17 @@ class CbPropelSerializeFlatten extends CbPropelSerializeNoop {
       $result = parent::value($object, $name);
       for ($level = 0; $level < $this->num_levels; ++$level) {
          $old_result = $result;
-         $result = NULL;
-         if ($old_result === NULL) break;
+         $do_strip = ($level == $this->num_levels - 1 && ($this->strip & self::STRIP_LAST_LEVEL) != 0);
+         $result = $do_strip ? NULL : array();
+         if (empty($old_result)) break;
          foreach ($old_result as $key => $obj) {
-            if ($level == $this->num_levels - 1 && ($this->strip & self::STRIP_LAST_LEVEL) != 0) {
+            if ($do_strip) {
                if ($result === NULL) {
                   $result = $obj;
                } else {
                   $result += $obj;
                }
             } else {
-               if ($result === NULL) $result = array();
-               
                if (is_int($key)) {
                   if (is_array($obj)) {
                      $result = array_merge($result,
