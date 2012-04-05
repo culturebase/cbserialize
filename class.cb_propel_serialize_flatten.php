@@ -20,8 +20,9 @@ class CbPropelSerializeFlatten extends CbPropelSerializeNoop {
    protected $num_levels;
    protected $strip;
 
-   const STRIP_KEYS = 1;
+   const STRIP_KEYS =       1;
    const STRIP_LAST_LEVEL = 2;
+   const STRIP_BOTH =       3;
 
    /**
     * Create a flattening serializer.
