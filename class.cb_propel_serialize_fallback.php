@@ -39,6 +39,10 @@ class CbPropelSerializeFallback extends CbPropelSerializeNoop
           }
       }
     
+    if ( empty($l_sValue) )
+      {
+        error_log(__CLASS__." value is empty");
+      }
     return $l_sValue;
   }
   
