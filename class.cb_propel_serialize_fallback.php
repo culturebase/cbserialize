@@ -26,12 +26,12 @@ class CbPropelSerializeFallback extends CbPropelSerializeNoop
   function value($object, $name)
   {
     error_log(__CLASS__." class = ".get_class($object).", name = ".$name);
-    $l_sValue = parent::value($object, $name);
+    $l_sValue = CbPropelSerializer::getObjectMember($object, $name);
     if ( empty($l_sValue) )
       {
         foreach ( $this->myFallbacks as $l_sFallbackName )
           {
-            $l_sValue = parent::value($object, $l_sFallbackName);
+            $l_sValue = CbPropelSerializer::getObjectMember($object, $l_sFallbackName);
             if ( ! empty ($l_sValue) )
               {
                 break;
