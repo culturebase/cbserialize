@@ -25,7 +25,7 @@ class CbPropelSerializeFallback extends CbPropelSerializeNoop
    */
   function value($object, $name)
   {
-    error_log(__CLASS__." class = ".get_class($object).", name = ".$name);
+    //error_log(__CLASS__." class = ".get_class($object).", name = ".$name);
     $l_sValue = CbPropelSerializer::getObjectMember($object, $name);
     if ( empty($l_sValue) )
       {
@@ -39,10 +39,6 @@ class CbPropelSerializeFallback extends CbPropelSerializeNoop
           }
       }
     
-    if ( empty($l_sValue) )
-      {
-        error_log(__CLASS__." value is empty");
-      }
     return $l_sValue;
   }
   

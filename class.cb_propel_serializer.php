@@ -88,7 +88,7 @@ class CbPropelSerializer {
          $method = 'get'.$l_aMethods[0];
          $recursion = $l_aMethods[1];
        }
-     error_log(__CLASS__." class = ".get_class($object).", method = ".$method);
+    // error_log(__CLASS__." class = ".get_class($object).", method = ".$method);
      $returnValue = call_user_func_array(array($object, $method), $args);
      if ( ! empty($recursion) )
        {
