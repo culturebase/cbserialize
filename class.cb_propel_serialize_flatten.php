@@ -44,7 +44,6 @@ class CbPropelSerializeFlatten extends CbPropelSerializeNoop {
          $old_result = $result;
          $do_strip = ($level == $this->num_levels - 1 && ($this->strip & self::STRIP_LAST_LEVEL) != 0);
          $result = $do_strip ? NULL : array();
-         if (empty($old_result)) break;
          foreach ($old_result as $key => $obj) {
             if ($do_strip) {
                if ($result === NULL) {
