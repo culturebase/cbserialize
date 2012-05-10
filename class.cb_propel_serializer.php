@@ -6,6 +6,11 @@
  * or virtual "joins" (e.g. CbFilmFilm.CbFilmGenres).
  */
 class CbPropelSerializer {
+   function __call($name, $arguments)
+   {
+      $class = new ReflectionClass('CbPropelSerialize'.CbCaseConverter::camelize($name));
+      return $class->newInstanceArgs($arguments);
+   }
 
    /**
     * Serializes a PropelObjectCollection.
