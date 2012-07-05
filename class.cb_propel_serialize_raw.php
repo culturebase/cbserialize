@@ -10,8 +10,8 @@ class CbPropelSerializeRaw {
 
    function __construct($args = array()) {
       $this->args = $args;
+      debug_print_backtrace();die();
    }
-
    function name($object, $name) {return $name;}
 
    function value($object, $name) {
