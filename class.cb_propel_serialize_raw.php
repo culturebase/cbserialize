@@ -15,6 +15,7 @@ class CbPropelSerializeRaw {
    function name($object, $name) {return $name;}
 
    function value($object, $name) {
-      d(CbPropelSerializer::getObjectMember($object, $name, $this->args));
+      $val = CbPropelSerializer::getObjectMember($object, $name, $this->args);
+      d($val);
    }
 }
