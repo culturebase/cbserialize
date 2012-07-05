@@ -10,11 +10,12 @@ class CbPropelSerializeRaw {
 
    function __construct($args = array()) {
       $this->args = $args;
-      debug_print_backtrace();die();
    }
    function name($object, $name) {return $name;}
 
    function value($object, $name) {
+
+      debug_print_backtrace();die();
       return CbPropelSerializer::getObjectMember($object, $name, $this->args);
    }
 }
