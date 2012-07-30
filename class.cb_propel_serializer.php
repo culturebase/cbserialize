@@ -24,7 +24,7 @@ class CbPropelSerializer {
     *    specify that literally, as string, e.g.:
     *    array('Firstname', 'Cb3Taccounts' => 'Account')
     * @return array Nested array with the given fields as keys and the
-    *    corresponding members of objects from the given collection as values. 
+    *    corresponding members of objects from the given collection as values.
     */
    static function collectionToArray($collection, $fields)
    {
@@ -83,6 +83,7 @@ class CbPropelSerializer {
 
    static function getObjectMember($object, $name, $args = array())
    {
+      if (!is_array($args)) $args = array($args);
       if (FALSE === strpos($name, "::")) {
          $method = 'get' . $name;
       } else {
@@ -106,7 +107,7 @@ class CbPropelSerializer {
     */
    static function objectFromArray($object, $data)
    {
-      
+
    }
 
 }
