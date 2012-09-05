@@ -44,8 +44,6 @@ class CbPropelSerializer {
     */
    static function objectToArray($object, $fields)
    {
-     error_log(__METHOD__.print_r($object, TRUE));
-     error_log(__METHOD__.print_r($fields, TRUE));
       if (!$object) return array();
       $result = array();
       if (!is_array($fields)) $fields = array($fields);
