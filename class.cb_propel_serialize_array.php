@@ -2,9 +2,6 @@
 
 require_once 'lib/framework/class.cb_propel_serializer.php';
 
-/**
- * Base serialize helper. Does nothing.
- */
 class CbPropelSerializeArray extends CbPropelSerializeNoop {
    function value($object, $name) {
       $ret = array();
