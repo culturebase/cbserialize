@@ -71,7 +71,8 @@ class CbPropelSerializer {
    static function childrenToArray($children, $fields)
    {
       if ($fields) {
-         if ($children instanceof PropelObjectCollection || is_array($children)) {
+         if ($children instanceof PropelCollection || is_array($children)) {
+            
             return self::collectionToArray($children, $fields);
          } else if ($children instanceof BaseObject) {
             return self::objectToArray($children, $fields);
