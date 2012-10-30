@@ -7,7 +7,7 @@ require_once 'lib/framework/class.cb_propel_serializer.php';
  */
 class CbPropelSerializeInject extends CbPropelSerializeNoop {
 
-   function value($object, $value) {
-      return $value;
+   function value($object, $name) {
+      return $this->fields;
    }
 }
