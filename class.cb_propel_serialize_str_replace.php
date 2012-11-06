@@ -9,9 +9,8 @@ class CbPropelSerializeStrReplace extends CbPropelSerializeRecursive {
       $this->search = $search;
       $this->replace = $replace;
    }
-   
+
    function action(&$val, $i) {
-      $val = str_replace($this->search, $this->replace, $val);
-      return $val;
+      return ($val = str_replace($this->search, $this->replace, $val));
    }
 }
