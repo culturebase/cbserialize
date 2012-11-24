@@ -38,8 +38,8 @@ $page representing a page in a website. That page object has a couple of
 properties and a some other objects of type "Article" are referring to it. You
 could serialize the page like this:
 
-    $s = new CbPropelSerializer();
-    CbPropelSerializer::objectToArray($page, array(
+    $s = new CbSerializer();
+    CbSerializer::objectToArray($page, array(
         "Id",
         "Type",
         "Label",
