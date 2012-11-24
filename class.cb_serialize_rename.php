@@ -1,11 +1,8 @@
 <?php
 
-require_once 'lib/framework/class.cb_propel_serialize_noop.php';
+require_once 'class.cb_serialize_base.php';
 
-/**
- *
- */
-class CbPropelSerializeRename extends CbPropelSerializeNoop {
+class CbSerializeRename extends CbSerializeBase {
    protected $name;
 
    function __construct($name, $fields = null, $args = array()) {

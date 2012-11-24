@@ -1,9 +1,11 @@
 <?php
 
+require_once 'class.cb_serialize_recursive.php';
+
 /**
- * Recursively translate HTML entities to plain text.
+ * Recursively translate strings.
  */
-class CbPropelSerializeStrReplace extends CbPropelSerializeRecursive {
+class CbSerializeStrReplace extends CbSerializeRecursive {
    function __construct($search, $replace, $fields = array(), $args = array()) {
       parent::__construct($fields, $args);
       $this->search = $search;

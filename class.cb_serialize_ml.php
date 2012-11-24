@@ -1,9 +1,11 @@
 <?php
 
+require_once 'class.cb_serialize_recursive.php';
+
 /**
  * Recursively translate the value using ML.
  */
-class CbPropelSerializeMl extends CbPropelSerializeRecursive {
+class CbSerializeMl extends CbSerializeRecursive {
    protected $prefix;
 
    protected function action(&$val, $i) {

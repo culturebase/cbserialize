@@ -3,7 +3,7 @@
 /**
  * Handle name and value by different sub-serializers.
  */
-class CbPropelSerializeComposite {
+class CbSerializeComposite {
    protected $name_helper;
    protected $value_helper;
 

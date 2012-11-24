@@ -1,11 +1,11 @@
 <?php
 
-require_once 'lib/framework/class.cb_propel_serializer.php';
+require_once 'class.cb_serialize_base.php';
 
 /**
  * Injects verbatim value into the array
  */
-class CbPropelSerializeInject extends CbPropelSerializeNoop {
+class CbSerializeInject extends CbSerializeBase {
 
    function value($object, $name) {
       return $this->fields;

@@ -1,10 +1,12 @@
 <?php
 
+require_once 'class.cb_serialize_base.php';
+
 /**
  * Translate the value using some action. If the value is in fact an array,
- * do this to all leafs of the object tree.
+ * do this to all leaves of the array tree.
  */
-abstract class CbPropelSerializeRecursive extends CbPropelSerializeNoop {
+abstract class CbSerializeRecursive extends CbSerializeBase {
 
    protected abstract function action(&$val, $i);
 

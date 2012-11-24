@@ -1,11 +1,11 @@
 <?php
 
-require_once 'lib/framework/class.cb_propel_serializer.php';
+require_once 'class.cb_serializer.php';
 
 /**
- * Base serialize helper. Does nothing.
+ * Base serialize helper. Does nothing special.
  */
-class CbPropelSerializeNoop {
+class CbSerializeBase {
    protected $fields;
    protected $args;
 
@@ -17,7 +17,7 @@ class CbPropelSerializeNoop {
    function name($object, $name) {return $name;}
 
    function value($object, $name) {
-      return CbPropelSerializer::childrenToArray(
-              CbPropelSerializer::getObjectMember($object, $name, $this->args), $this->fields);
+      return CbSerializer::childrenToArray(
+           CbSerializer::getObjectMember($object, $name, $this->args), $this->fields);
    }
 }

@@ -1,11 +1,11 @@
 <?php
 
-require_once 'lib/framework/class.cb_propel_serializer.php';
+require_once 'class.cb_serializer.php';
 
 /**
  * Base serialize helper. Does nothing.
  */
-class CbPropelSerializeRaw {
+class CbSerializeRaw {
    protected $args;
 
    function __construct($args = array()) {
@@ -14,6 +14,6 @@ class CbPropelSerializeRaw {
    function name($object, $name) {return $name;}
 
    function value($object, $name) {
-      return CbPropelSerializer::getObjectMember($object, $name, $this->args);
+      return CbSerializer::getObjectMember($object, $name, $this->args);
    }
 }

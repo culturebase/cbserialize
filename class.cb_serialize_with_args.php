@@ -1,11 +1,11 @@
 <?php
 
-require_once 'lib/framework/class.cb_propel_serialize_noop.php';
+require_once 'class.cb_serialize_base.php';
 
 /**
  * Alias for Base serialize helper to make it look nicer if no fields are given.
  */
-class CbPropelSerializeWithArgs extends CbPropelSerializeNoop {
+class CbSerializeWithArgs extends CbSerializeBase {
    function __construct($fields = array(), $args = array()) {
       if (!is_array($fields)) $fields = array($fields);
       if (!is_array($args)) $args = array($args);

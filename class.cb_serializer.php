@@ -5,10 +5,14 @@
  * the fields given in the description. It can also work with virtual fields
  * or virtual "joins" (e.g. CbFilmFilm.CbFilmGenres).
  */
-class CbPropelSerializer {
+class CbSerializer {
    function __call($name, $arguments)
    {
-      $class = new ReflectionClass('CbPropelSerialize'.CbCaseConverter::camelize($name));
+      $class_name = 'CbSerialize'.CbCaseConverter::camelize($name);
+      if (!class_exists($class_name)) {
+         require_once 'class.'.CbCaseConverter::snakeify($class_name).'.php';
+      }
+      $class = new ReflectionClass($class_name);
       return $class->newInstanceArgs($arguments);
    }
 
@@ -72,7 +76,7 @@ class CbPropelSerializer {
    {
       if ($fields) {
          if ($children instanceof PropelCollection || is_array($children)) {
-            
+
             return self::collectionToArray($children, $fields);
          } else if ($children instanceof BaseObject) {
             return self::objectToArray($children, $fields);
