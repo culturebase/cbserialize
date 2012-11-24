@@ -1,4 +1,20 @@
 <?php
+/* This file is part of cbserialize.
+ * Copyright © 2011-2012 stiftung kulturserver.de ggmbh <github@culturebase.org>
+ *
+ * cbserialize is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * cbserialize is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with cbserialize.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
 /**
  * Array serializer for propel objects. It works recursively and only serializes
@@ -89,12 +105,12 @@ class CbSerializer {
    static function getObjectMember($object, $name, $args = array())
    {
       if (!is_array($args)) $args = array($args);
-      if (FALSE === strpos($name, "::")) {
+      if (false === strpos($name, "::")) {
          $method = 'get' . $name;
       } else {
-         $l_aMethods = explode("::", $name, 2);
-         $method = 'get' . $l_aMethods[0];
-         $recursion = $l_aMethods[1];
+         $methods = explode("::", $name, 2);
+         $method = 'get' . $methods[0];
+         $recursion = $methods[1];
       }
       $returnValue = call_user_func_array(array($object, $method), $args);
       if (is_object($returnValue) && !empty($recursion)) {
