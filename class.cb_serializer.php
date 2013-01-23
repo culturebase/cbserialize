@@ -74,15 +74,27 @@ class CbSerializer {
          }
 
          $children = '';
+         $to_parent = false;
          if (is_object($value)) {
             $children = $value->value($object, $name);
             $name = $value->name($object, $name);
+            if (method_exists($value, "toParent")) {
+               $to_parent = $value->toParent();
+            }
          } else {
             $children = self::childrenToArray(self::getObjectMember($object, $name), $value);
          }
 
          if (!is_object($children)) { //don't serialize if nothing is specified
-            $result[$name] = $children;
+            if ($to_parent) {
+               if (is_array($children)) {
+                  $result = array_merge($result, $children);
+               } else {
+                  $result = $children;
+               }
+            } else {
+               $result[$name] = $children;
+            }
          }
       }
       return $result;
